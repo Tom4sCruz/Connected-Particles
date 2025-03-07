@@ -1,8 +1,14 @@
 export class Particle {
-    constructor(x, y, abs_vel, angle) {
+    constructor(x, y, abs_vel, angle, random_bool = false, random_start = 0.8, random_end = 1) {
         this.x = x;
         this.y = y;
-        this.vel = [abs_vel*Math.cos(angle), abs_vel*Math.sin(angle)];   // [ vx, vy]
+
+        if (random_bool) {
+            let vel = abs_vel * (random_start + Math.random() * (random_end - random_start));
+            this.vel = [vel*Math.cos(angle), vel*Math.sin(angle)];
+        } else {
+            this.vel = [abs_vel*Math.cos(angle), abs_vel*Math.sin(angle)];   // [ vx, vy]
+        }
     }
 
     setPos (x, y) {
