@@ -6,9 +6,10 @@ function setup() {
     background(0);
 }
 
-const N_PARTICLES = 100;
-const ABSOLUTE_VELOCITY = 5;
+const N_PARTICLES = 120;
+const ABSOLUTE_VELOCITY = 1.5;
 export const DIAMETER_PARTICLE = 0;
+const MAX_DISTANCE = 650;
 
 const MIDDLE_SCREEN_X = window.innerWidth/2;
 const MIDDLE_SCREEN_Y = window.innerHeight/2;
@@ -18,7 +19,7 @@ const DELTA_TIME = 1;
 let particles = [];
 
 for (let i=0; i<N_PARTICLES; i++) {
-    particles.push(new Particle(MIDDLE_SCREEN_X , MIDDLE_SCREEN_Y, ABSOLUTE_VELOCITY, i * 2*Math.PI/N_PARTICLES, true, 0.5));
+    particles.push(new Particle(MIDDLE_SCREEN_X , MIDDLE_SCREEN_Y, ABSOLUTE_VELOCITY, i * 2*Math.PI/N_PARTICLES, true, 0.1));
 }
 
 function draw() {
@@ -38,10 +39,11 @@ function draw() {
         }
     }
 
-    for (let i = 0; i < particles.length; i++) {
-        for (let j = 0; j < particles.length; j++) {
-            if (i !== j) {
-                stroke(255, alpha_value(dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y)));
+    for (let i = 0; i < particles.length-1; i++) {
+        for (let j = i+1; j < particles.length; j++) {
+            let distance = dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+            if (distance <= MAX_DISTANCE) {
+                stroke(255, alpha_value(distance));
                 line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
             }
         } 
