@@ -1,11 +1,11 @@
-import { DIAMETER_PARTICLE } from "./main.js"
+import { DIAMETER_PARTICLE, LIMIT_BOTTOM, LIMIT_RIGHT } from "./main.js"
 
 export function collided_x (x) {
-    return x <= DIAMETER_PARTICLE/2 || x >= window.innerWidth - DIAMETER_PARTICLE/2;
+    return x <= DIAMETER_PARTICLE/2 || x >= LIMIT_RIGHT - DIAMETER_PARTICLE/2;
 }
 
 export function collided_y (y) {
-    return y <= DIAMETER_PARTICLE/2 || y >= window.innerHeight - DIAMETER_PARTICLE/2;
+    return y <= DIAMETER_PARTICLE/2 || y >= LIMIT_BOTTOM - DIAMETER_PARTICLE/2;
 }
 
 /*
