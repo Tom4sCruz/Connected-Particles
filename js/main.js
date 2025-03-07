@@ -6,10 +6,9 @@ function setup() {
     background(0);
 }
 
-const N_PARTICLES = 120;
+const N_PARTICLES = 200;
 const ABSOLUTE_VELOCITY = 1.5;
 export const DIAMETER_PARTICLE = 0;
-const MAX_DISTANCE = 650;
 
 const MIDDLE_SCREEN_X = window.innerWidth/2;
 const MIDDLE_SCREEN_Y = window.innerHeight/2;
@@ -42,10 +41,8 @@ function draw() {
     for (let i = 0; i < particles.length-1; i++) {
         for (let j = i+1; j < particles.length; j++) {
             let distance = dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
-            if (distance <= MAX_DISTANCE) {
-                stroke(255, alpha_value(distance));
-                line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
-            }
+            stroke(255, alpha_value(distance));
+            line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
         } 
     }
 }
