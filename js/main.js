@@ -25,7 +25,7 @@ function draw() {
     noStroke();
     background(0);
     for (let i = 0; i < particles.length; i++) {
-        circle(particles[i].x, particles[i].y, DIAMETER_PARTICLE);
+        //circle(particles[i].x, particles[i].y, DIAMETER_PARTICLE);
         particles[i].update(DELTA_TIME);
     }
 
@@ -41,7 +41,7 @@ function draw() {
     for (let i = 0; i < particles.length; i++) {
         for (let j = 0; j < particles.length; j++) {
             if (i !== j) {
-                stroke(999, alpha_value(dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y)));
+                stroke(255, alpha_value(dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y)));
                 line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
             }
         } 
