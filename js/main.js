@@ -15,9 +15,6 @@ const MAX_DISTANCE = 650;
 
 const RANDOM_START = 0.5; // minimum velocity = 50% of ABSOLUTE_VELOCITY
 
-const MIDDLE_SCREEN_X = window.innerWidth/2;
-const MIDDLE_SCREEN_Y = window.innerHeight/2;
-
 export const LIMIT_RIGHT = window.innerWidth;
 export const LIMIT_BOTTOM = window.innerHeight;
 
@@ -26,7 +23,7 @@ const DELTA_TIME = 1;
 let particles = [];
 
 for (let i=0; i<N_PARTICLES; i++) {
-    particles.push(new Particle(MIDDLE_SCREEN_X , MIDDLE_SCREEN_Y, ABSOLUTE_VELOCITY, i * 2*Math.PI/N_PARTICLES, true, RANDOM_START));
+    particles.push(new Particle(LIMIT_RIGHT * Math.random() , LIMIT_BOTTOM * Math.random(), ABSOLUTE_VELOCITY, i * 2*Math.PI/N_PARTICLES, true, RANDOM_START));
 }
 
 function draw() {
